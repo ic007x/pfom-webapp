@@ -602,7 +602,7 @@ Provide factual, professional, ultra-concise answers focused on industrial specs
                 {/* UNIQUE 3D / LIFTED QUOTE BUTTON */}
                 <button
                   onClick={() => setIsRfqDrawerOpen(true)}
-                  className="bg-[#ffea01] text-[#000000] font-black px-4 py-2 border-2 border-[#000000] shadow-[4px_4px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_#000000] transition-all flex items-center gap-2 text-xs sm:text-sm"
+                  className="bg-[#ffea01] text-[#000000] font-black px-4 py-2 border-2 border-[#000000] shadow-[4px_4px_0px_#d946ef] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_#d946ef] transition-all flex items-center gap-2 text-xs sm:text-sm"
                 >
                   <Send className="w-4 h-4" />
                   {t.getQuote}
@@ -644,7 +644,7 @@ Provide factual, professional, ultra-concise answers focused on industrial specs
                 <div className="flex flex-wrap items-center gap-4 pt-2">
                   <button
                     onClick={() => setIsRfqDrawerOpen(true)}
-                    className="bg-[#ffea01] text-[#000000] font-black px-6 py-3 border-2 border-[#000000] shadow-[6px_6px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[3px_3px_0px_#000000] transition-all text-sm uppercase flex items-center gap-2"
+                    className="bg-[#ffea01] text-[#000000] font-black px-6 py-3 border-2 border-[#000000] shadow-[6px_6px_0px_#d946ef] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[3px_3px_0px_#d946ef] transition-all text-sm uppercase flex items-center gap-2"
                   >
                     <Send className="w-4 h-4" />
                     {t.getQuote}
@@ -729,7 +729,7 @@ Provide factual, professional, ultra-concise answers focused on industrial specs
 
                 <button
                   onClick={() => setIsRfqDrawerOpen(true)}
-                  className="w-full bg-[#ffea01] text-[#000000] font-black py-3 border-2 border-[#000000] shadow-[5px_5px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_#000000] uppercase text-sm tracking-wide text-center"
+                  className="w-full bg-[#ffea01] text-[#000000] font-black py-3 border-2 border-[#000000] shadow-[5px_5px_0px_#d946ef] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_#d946ef] uppercase text-sm tracking-wide text-center"
                 >
                   Get Custom Contract RFQ
                 </button>
@@ -795,14 +795,25 @@ Provide factual, professional, ultra-concise answers focused on industrial specs
                     className="bg-[#fafafa] border-4 border-[#000000] flex flex-col justify-between"
                   >
                     <div>
-                      {/* Visual Graphic Representation */}
+                      {/* Visual Graphic Representation / Conditional Text Replacement */}
                       <div className="relative">
-                        <img
-                          src={`assets/02_Product_Images/${PRODUCT_IMAGE_BY_ID[product.id]}`}
-                          alt={product.id === 'yellow-mustard-oil' ? 'Yellow mustard seeds used to produce mustard oil' : product.name}
-                          loading="lazy"
-                          className="w-full h-36 object-contain bg-white border-b-2 border-[#000000]"
-                        />
+                        {product.id === 'yellow-mustard-oil' || product.id === 'sesame-seeds-oil' ? (
+                          <div className="w-full h-36 bg-[#ffea01] border-b-2 border-[#000000] flex flex-col items-center justify-center p-4 text-center">
+                            <span className="font-black text-xs uppercase tracking-wider text-[#000000]">
+                              [ DIRECT MILL TANKER / BULK SUPPLY ]
+                            </span>
+                            <span className="text-[10px] font-bold text-[#000000] mt-1">
+                              Certified Pure Grade • No Image Media Required
+                            </span>
+                          </div>
+                        ) : (
+                          <img
+                            src={`assets/02_Product_Images/${PRODUCT_IMAGE_BY_ID[product.id]}`}
+                            alt={product.name}
+                            loading="lazy"
+                            className="w-full h-36 object-contain bg-white border-b-2 border-[#000000]"
+                          />
+                        )}
 
                         {product.bestseller && (
                           <span className="absolute top-3 left-3 bg-[#ffea01] text-[#000000] font-black text-[10px] px-2 py-1 border-2 border-[#000000] uppercase">
@@ -859,7 +870,7 @@ Provide factual, professional, ultra-concise answers focused on industrial specs
                           setRfqForm(prev => ({ ...prev, product: product.name }));
                           setIsRfqDrawerOpen(true);
                         }}
-                        className="bg-[#ffea01] text-[#000000] font-black py-2.5 px-3 border-2 border-[#000000] shadow-[3px_3px_0px_#000000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[1px_1px_0px_#000000] text-xs uppercase text-center"
+                        className="bg-[#ffea01] text-[#000000] font-black py-2.5 px-3 border-2 border-[#000000] shadow-[3px_3px_0px_#d946ef] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[1px_1px_0px_#d946ef] text-xs uppercase text-center"
                       >
                         {t.getQuote}
                       </button>
@@ -1398,7 +1409,7 @@ Provide factual, professional, ultra-concise answers focused on industrial specs
                       setActiveModalProduct(null);
                       setIsRfqDrawerOpen(true);
                     }}
-                    className="bg-[#ffea01] text-[#000000] font-black py-2.5 border-2 border-[#000000] shadow-[3px_3px_0px_#000000] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[1px_1px_0px_#000000] text-xs uppercase"
+                    className="bg-[#ffea01] text-[#000000] font-black py-2.5 border-2 border-[#000000] shadow-[3px_3px_0px_#d946ef] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[1px_1px_0px_#d946ef] text-xs uppercase"
                   >
                     Get Custom Quote
                   </button>
@@ -1642,7 +1653,7 @@ Provide factual, professional, ultra-concise answers focused on industrial specs
 
                     <button
                       type="submit"
-                      className="w-full bg-[#ffea01] text-[#000000] font-black py-3.5 border-2 border-[#000000] shadow-[5px_5px_0px_#000000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_#000000] uppercase text-sm tracking-wider"
+                      className="w-full bg-[#ffea01] text-[#000000] font-black py-3.5 border-2 border-[#000000] shadow-[5px_5px_0px_#d946ef] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_#d946ef] uppercase text-sm tracking-wider"
                     >
                       Transmit Commercial RFQ
                     </button>
